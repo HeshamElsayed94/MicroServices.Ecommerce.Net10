@@ -13,7 +13,7 @@ public static class BrandContextSeed
 		if (hasData)
 			return;
 
-		var filePath = Path.Combine("Data", "SeedData", "Brand.json");
+		var filePath = Path.Combine("Data", "SeedData", "brands.json");
 
 		if (!File.Exists(filePath))
 		{
