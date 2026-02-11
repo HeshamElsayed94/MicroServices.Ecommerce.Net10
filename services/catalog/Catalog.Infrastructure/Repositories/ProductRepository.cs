@@ -5,7 +5,7 @@ using MongoDB.Driver;
 
 namespace Catalog.Infrastructure.Repositories;
 
-internal class ProuductRepository(ICatalogContext context) : IProuductRepository, IBrandRepository, ITypeRepository
+public class ProductRepository(ICatalogContext context) : IProductRepository, IBrandRepository, ITypeRepository
 {
 	public async Task<Product> CreateProductAsync(Product product, CancellationToken cancellationToken = default)
 	{
@@ -33,7 +33,7 @@ internal class ProuductRepository(ICatalogContext context) : IProuductRepository
 		return await context.Types.Find(_ => true).ToListAsync(cancellationToken: cancellationToken);
 	}
 
-	public async Task<Product> GetProductByIdAsync(string id, CancellationToken cancellationToken = default)
+	public async Task<Product?> GetProductByIdAsync(string id, CancellationToken cancellationToken = default)
 	{
 		return await context.Products.Find(p => p.Id == id).FirstOrDefaultAsync(cancellationToken: cancellationToken);
 	}
